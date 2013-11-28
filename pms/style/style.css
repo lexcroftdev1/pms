@@ -1,0 +1,391 @@
+..@charset "utf-8";
+/* CSS Document */
+
+/* Master Style Sheet for Jermaine Griggs Hear and Play */
+/* By Bryan Dease at marketreadytools.com */
+
+* { margin: 0; padding: 0; text-decoration: none; font-size: 1em; outline: none; }
+code, kbd, samp, pre, tt, var, isindex { font: inherit; font-size: 1em; }
+dfn, i, cite, var, address, em { font-style: normal; }
+th, b, strong, h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+a, img, a img, iframe, form, abbr, acronym, object, applet { border: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+caption, th, td, center { text-align: left; }
+body { line-height: 1; background: white; color: black; }
+q { quotes: "" ""; }
+ul, ol, dir, menu { list-style: none; }
+sub, sup { vertical-align: baseline; }
+a { 
+	color: inherit; 
+ }
+hr { display: none; } /* we don't need a visual hr in layout */
+font { color: inherit !important; font: inherit !important; color: inherit !important; } /* disables some nasty font attributes in standard browsers */
+.break-word {
+  word-wrap:break-word;
+  word-break:break-all;
+}
+/*
+-----------------------------
+GENERIC
+-----------------------------
+*/
+
+/* MAIN TYPOGRAPHY */
+
+html { font-size: 62.5%; font-family: helvetica, "microsoft sans serif", arial, sans-serif; }
+strong, th, thead td, h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+cite, em, dfn { font-style: italic; }
+code, kbd, samp, pre, tt, var, input[type='text'], textarea { font-size: 92%; font-family: monaco, "Lucida Console", courier, mono-space; }
+del { text-decoration: line-through; color: #666; }
+ins, dfn { border-bottom: 1px solid #ccc; }
+small, sup, sub { font-size: 85%; }
+abbr, acronym { text-transform: uppercase; font-size: 85%; letter-spacing: .1em; }
+a abbr, a acronym { border: none; }
+abbr[title], acronym[title], dfn[title] { cursor: help; border-bottom: 1px solid #ccc; }
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+fieldset
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px #CCC solid;
+	padding:8px;
+}
+.productinfo {
+	margin: 40px;
+	border: 1px #CCC solid;
+	padding:8px;
+	text-align:left! important;
+	vertical-align:top! important;
+}
+.productinfo h2 {
+	font-size: 17px;
+	border:none;
+}
+.productinfo p {
+	border:none;
+
+}
+.productinfo img {
+        border:none;
+}
+.productinfo a
+{
+	color:#903;
+	font-weight:bold;
+}
+
+/* QUOTES */
+
+blockquote { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; color: #666; }
+blockquote *:first-child:before { content: "\201C"; }
+blockquote *:first-child:after { content: "\201D"; }
+
+/* language specific quotes! */
+
+q { quotes: "\201C" "\201D" "\2018" "\2019"; }
+:lang(af), :lang(nl), :lang(pl) { quotes: '\201E' '\201D' '\201A' '\2019'; }
+:lang(bg), :lang(cs), :lang(de), :lang(is), :lang(lt), :lang(sk), :lang(sr), :lang(ro) { quotes: '\201E' '\201C' '\201A' '\2018'; }
+:lang(da), :lang(hr) { quotes: '\00BB' '\00AB' '\203A' '\2039'; }
+:lang(el), :lang(es), :lang(sq), :lang(tr) { quotes: '\00AB' '\00BB' '\2039' '\203A'; }
+:lang(en-GB) { quotes: '\2018' '\2019' '\201C' '\201D'; }
+:lang(fi), :lang(sv) { quotes: '\201D' '\201D' '\2019' '\2019'; }
+:lang(fr) { quotes: '\ab\2005' '\2005\bb' '\2039\2005' '\2005\203a'; }
+
+/* NOTE: safari refuses to support the quotes syntax. I only added the english language quotes for safari to save space. */
+html[lang|='en'] q:before   { content: '\201C'; }
+html[lang|='en'] q:after    { content: '\201D'; }
+html[lang|='en'] q q:before { content: '\2018'; }
+html[lang|='en'] q q:after  { content: '\2019'; }
+
+/* FORMS */
+
+
+
+/*
+-----------------------------
+CONTENT ONLY
+-----------------------------
+*/
+
+/* BASE SIZES */
+
+.content { font-size: 1.2em; line-height: 1.6em; }
+.content h1 { font-size: 1.6em; }
+.content h2 { font-size: 1.5em; }
+.content h3 { font-size: 1.4em; }
+.content h4 { font-size: 1.3em; }
+.content h5 { font-size: 1.2em; }
+.content h6 { font-size: 1em; }
+
+/* HR */
+
+.content hr { display: block; background: #aaa; color: #aaa; width: 100%; height: 1px; border: none; }
+
+/* LISTS */
+
+.content ul li {
+	margin-left: 0.85em;
+}
+
+/* TABLES */
+
+
+/* MARGINS & PADDINGS */
+
+.content blockquote *:first-child { margin: .8em 0; }
+.content hr, .content p, .content ul, .content ol, .content dl, .content pre, .content blockquote, .content address, .content table, .content form { margin-bottom: 1.6em; }
+.content p+p { margin-top: -.8em; }
+/* NOTE: Calulate header margins: TOP: 1.6em/size, BOTTOM: 1.6em/size/2 */
+.content h1 { margin: 1em 0 .5em;  }
+.content h2 { margin: 1.07em 0 .535em; }
+.content h3 { margin: 1.14em 0 .57em; }
+.content h4 { margin: 1.23em 0 .615em; }
+.content h5 { margin: 1.33em 0 .67em; }
+.content h6 { margin: 1.6em 0 .8em; }
+.content caption { padding-bottom: .8em; } /* padding instead of margin for IE */
+.content blockquote { padding: 0 1em; margin: 1.6em 0; }
+.content dt { margin-top: .8em; margin-bottom: .4em; }
+.content ul { margin-left: 1.5em; }
+.content ol { margin-left: 2.35em; }
+.content ol ol, .content ul ol { margin-left: 2.5em; }
+
+/* COLORS */
+
+.content a:link { text-decoration: underline; color: #36c; }
+.content a:visited { text-decoration: underline; color: #3366CC; }
+.content a:hover { text-decoration: underline; color: #c33; }
+.content a:active, .content a:focus { text-decoration: underline; color: #000; }
+.content code, .content pre { color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
+
+
+/* main elements */
+
+body {
+	background-image: url(../images/bg2.jpg);
+	background-repeat: repeat-x;
+	margin:0;
+}
+h1, h2
+{
+	text-align:center;
+}
+#pagewrap {
+	background-image: url(../images/bg2.jpg);
+	background-repeat: repeat-x;
+	background-position: center top;
+
+}
+#wrapper {
+	width: 950px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	position: relative;
+}
+#header {
+	height: 66px;
+	width: 950px;
+	overflow:hidden;
+	background-image: url(../images/piano-by-ear-header.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.content #wrapper #welcome #holder {
+	padding-top: 0px;
+	padding-right: 50px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	float: left;
+	margin: 0px;
+}
+#footer {
+	clear: both;
+	height: 90px;
+	width: 800px;
+	margin-right: 50px;
+	margin-left: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align:center;
+}
+#footer p {
+	color: #666666;
+	text-align: left;
+	font-size: 11px;
+	margin: 0px;
+	padding: 0px;
+}
+#trophy {
+	float: right;
+	margin-top:5px;
+}
+
+ul#nav {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 12px;
+	margin-left: 0px;
+}
+#footer #nav li.first {
+	margin: 0px;
+	padding: 0px;
+}
+#nav li {
+	display: inline;
+	font-size: 11px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 2px;
+	margin-bottom: 0px;
+	color: #2A5893;
+	margin-left: 1px;
+}
+#nav li a {
+	color: #2A5893;
+	text-decoration: none;
+}
+#nav li a:hover {
+	text-decoration: underline;
+}
+address {
+	font-size: 11px;
+	color: #666666;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+}
+#topnav {
+	list-style-type:none;
+	margin-top:5px;
+	position:absolute;
+	right:-5px;
+	width:220px;
+	z-index:9999999;
+	padding-left: 3px;
+}
+#topnav li {
+	display:inline;
+	color:#3366CC;
+	margin-left:-2px;
+	margin-right:2px;
+}
+#topnav a {
+	text-decoration:none;
+}
+
+/* font styles */
+
+.content {
+	font-family: 'Lucida Grande', Geneva, Arial, Helvetica, sans-serif;
+}
+/* feedburner entries */
+#feed {
+	background-image: url(../images/burn.jpg);
+	background-repeat: repeat-y;
+	background-position: center top;
+	margin-top: -18px;
+	position: relative;
+	background-color: #D6D6D6;
+}
+#feed h2, #feed h3 {
+	display: block;
+}
+#feed h2 {
+	background-image: url(../images/burn-top.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	padding-top: 25px;
+	padding-left: 50px;
+	text-align:center;
+}
+#feed p {
+	padding-left: 50px;
+}
+#feed h2 a, #feed h2 a:visited {
+	color: #A71A00;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
+}
+#feed h3 {
+	font-size: 1em;
+}
+#feed ul {
+	margin: 0 auto;
+	width: 850px;
+}
+#feed .date {
+	font-style: italic;
+}
+#feed .subscribe {
+	background-image: url(http://www.feedburner.com/fb/i/icn/feed-icon-10x10.gif);
+	background-repeat: no-repeat;
+	background-position: center left;
+	display: block;
+	margin-left: 60px;
+        min-height: 10px;
+        min-width: 10px;
+        padding-left: 12px;
+}
+#feed .footer {
+	background-image: url(../images/burn-bottom.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 18px;
+	width: 950px;
+}
+
+/* popup opener*/
+.modal {
+	background-color:#fff;
+	display:none;
+	width:800px;
+	padding:15px;
+	text-align:left;
+	border:2px solid #333;
+
+	opacity:0.8;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-box-shadow: 0 0 50px #ccc;
+	-webkit-box-shadow: 0 0 50px #ccc;
+}
+.modal span {
+	background:url(../images/info.png) 0 50% no-repeat!important;
+	margin:0px!important;
+	padding:14px 0 20px 40px!important;
+	font-size:20px!important;
+}
+table.pagination
+{
+	margin-left:20px;
+	margin-right:20px;
+	border:none;
+}
+table.pagination td
+{
+	padding-right:10px;
+	height: 18px;
+	font-size:16px;
+	font-weight:bold;
+}
+table.pagination td a
+{
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#ffffff;
+	border:1px solid #aaaaaa;
+	text-decoration: none!important;
+	
+}
+table.pagination td a:hover
+{
+	background-color:#ffffff;
+	border:1px solid #ffffff;
+	text-decoration:none;
+}
+/* popup opener*/

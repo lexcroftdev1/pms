@@ -1,0 +1,23 @@
+<div id="footer" >
+  <!-- start footer -->
+  	<ul id="nav" style="text-align:center!important;padding-top:130px;font-weight:bold;">
+	    <li> <a target="HnP" href="http://www.brainsoftpk.com/index.php">About Us</a> |</li>
+	    <li> <a target="HnP" href="http://www.brainsoftpk.com/contact.php">Contact Us</a> |</li>
+	    <li> <a target="HnP" href="http://www.brainsoftpk.com/portfolios.php">Portfolio</a> |</li>
+	    <li> <a target="HnP" href="http://www.brainsoftpk.com/skillss.php">Expertises</a></li>
+  	</ul>
+  	<p style="text-align:center;margin-top:5px;">
+	    &copy; 2001-2009 BrainSoft Technologies Inc. All rights reserved.
+		<br>
+			<A class=globallinks href="http://www.brainsoftpk.com/legals.php">Disclaimer</A>&nbsp;
+			<A class=globallinks href="http://www.brainsoftpk.com/privacys.php">Privacy Statement</A>&nbsp;
+			<A class=globallinks href="http://www.brainsoftpk.com/termsofuses.php">Terms of Use</A>
+			<BR>Comments on this site? <A class=globallinks href="mailto:info@brainsoftpk.com">E-mail us</A>.
+	</p>
+	<br />
+  <!-- end footer -->
+</div>
+<div class="footer"> </div>
+</div>
+</div>
+</body></html>

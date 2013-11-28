@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/PO/!svn/ver/1/Includes/PHPMailer
+END
+docs.ini
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/PO/!svn/ver/1/Includes/PHPMailer/docs.ini
+END
+class.phpmailer.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/PO/!svn/ver/1/Includes/PHPMailer/class.phpmailer.php
+END
+class.pop3.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/PO/!svn/ver/1/Includes/PHPMailer/class.pop3.php
+END
+class.smtp.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/PO/!svn/ver/1/Includes/PHPMailer/class.smtp.php
+END

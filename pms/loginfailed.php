@@ -1,0 +1,1 @@
+<p align="center"><span class="span"><span id="span">Login failed</span></span>. please hit the back button on your browser to go back to previous page or <a href="login.php">click here</a></p>

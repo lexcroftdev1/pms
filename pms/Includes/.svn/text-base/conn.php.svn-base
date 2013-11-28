@@ -1,0 +1,28 @@
+<?php
+
+# FileName="Connection_php_mysql.htm"
+# Type="MYSQL"
+# HTTP="true"
+
+include_once("constants.php");
+
+$hostname_conn = "localhost";
+$database_conn = "yardost1_po";
+$username_conn = "yardost1_yardost";
+$password_conn = "urasaeki";
+
+$conn = mysql_pconnect($hostname_conn, $username_conn, $password_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+
+if (!isset($_SESSION)){session_start();}
+
+$Username = $_SESSION['MM_Username'];
+$UserGroup = $_SESSION['MM_UserGroup'];
+$LoggedInClientId = $_SESSION['MM_ClientId'];
+$ServiceProviderInd = $_SESSION['MM_ServiceProviderInd'];
+$ServiceBuyerInd = $_SESSION['MM_ServiceBuyerInd'];
+
+include_once("common.php");
+include_once("options.php");
+include_once("PHPMailer/class.phpmailer.php");
+include_once("emailer.php");
+?>
