@@ -50,25 +50,36 @@ if (isset($_POST['UserName']))
 }
 require_once('Includes/header.php');
 ?>
-<form id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">
-<table cellpadding="10" valign="top" align="center">
-  <tr>
-	<td align="right" valign="top"><label>User Name</label></td>
-	<td><input type="text" name="UserName" id="UserName" /></td>
 
-  </tr>
-  <tr>
-	<td align="right" valign="top"><label>Password</label></td>
-	<td><input type="password" name="Password" id="Password" /></td>
-  </tr>
-  <tr>
-	<td></td>
-    <td>
-      <input type="submit" name="Login" id="Login" value="Login" />
-    </td>
-  </tr>
-</table>
-</form>
+<div class="row">
+  <div class="col-md-6">
+    <form id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>" class="form-signin">
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <input type="text" id="UserName" class="form-control" name="UserName" placeholder="User Name" required autofocus>
+      <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" name="Login" id="Login" type="submit">Sign in</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <form id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>" class="form-signin">
+      <h2 class="form-signin-heading">Create New Account</h2>
+      <input type="text" id="Name" class="form-control" name="Name" placeholder="Enter Full Name" required autofocus>
+      <input type="text" id="UserName" class="form-control" name="UserName" placeholder="Select User Name" required autofocus>
+      <input type="password" id="password" class="form-control" name="password" placeholder="Password" required autofocus>
+      <input type="password" id="password" class="form-control" name="password" placeholder="Repeat Password" required autofocus>
+      <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email" required autofocus>
+      <label class="checkbox">
+        By cliking on "Sign up" you agree <br>to <a href="#"><strong>Lexcroft's Terms & Conditions</strong></a>
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" name="Login" id="Login" type="submit">Create</button>
+    </form>
+  </div>
+</div>
+
+<br />
 <?php
 require_once('Includes/footer.php');
 ?>

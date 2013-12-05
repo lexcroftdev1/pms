@@ -1,0 +1,27 @@
+.navbar {
+background:#252525;
+margin-bottom:0px;
+border-radius:0px;
+}
+a.navbar-brand {
+color:#fff;
+padding-left:4%;
+}
+.navbar ul {
+padding-right:2%;
+}
+.navbar ul li a {
+color:#fff;
+margin-right:4%;
+}
+.jumbotron {
+background:#ddd;
+min-height:300px;
+}
+.jumbotron h1 {
+font-size:100px;
+color:#e12b74;
+line-height:150px;
+padding-left:2%;
+font-family:Droid Sans;
+}
