@@ -572,3 +572,13 @@ strike {color: #920000;}
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+form {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+
+.maxwidth {
+   max-width:250px;
+}

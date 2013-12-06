@@ -111,68 +111,80 @@ $queryString_rsProject = sprintf("&totalRows_rsProject=%d%s", $totalRows_rsProje
 require_once('Includes/header.php');
 
 ?>
-<form name="form1" method="post">
 
-    <div style="float:left;margin-bottom:10px;margin-left:55px;vertical-align:middle;">
-        <h1>MY Projects</h1>
-    </div>
-    <div style="float:right;margin-bottom:10px;margin-right:55px;vertical-align:middle;">
-        <a href="addproject.php"><b>Add new project</b></a>
-    </div>
-    <br clear="all" />
-    <div style="float:left;margin-bottom:10px;margin-left:55px;vertical-align:middle;">
-  		Sorted by: <? echo common::formSelect('SortOrder', array('DateWhenPosted'=>'Date when posted','ProjectPriorityId'=>'Project Priority','ProjectStatusId'=>'Project Status'),$SortOrder,false,'onchange="document.form1.action=\'archivedprojects.php?SortOrder=\'+this.value;document.form1.submit();"'); ?>
-    </div>
-    <div style="float:right;margin-bottom:10px;margin-right:55px;vertical-align:middle;">
-  		Filter by:&nbsp;
-        <select name="ProjectStatusId" onchange="javascript:document.location='archivedprojects.php?ProjectStatusId='+this.value;">
-            <option value="" <?php if ($ProjectStatusId == "" ) {
-                echo "selected";
-                    } ?>>All</option>
-            <option value="incomplete" <?php if ($ProjectStatusId == "incomplete" ) {
-                echo "selected";
-                    } ?>>Only incomplete ones</option>
-        </select>
-        <? echo common::SelectByEnum('ProjectPriorityId','projectpriority',$ProjectPriorityId,true,'onchange="document.form1.action=\'archivedprojects.php?ProjectPriorityId=\'+this.value;document.form1.submit();"'); ?>
-        <?php
-        if(common::isAdmin() === true) {
-            echo common::SelectByEnum('ClientId','client',$ClientId,true,'onchange="document.form1.action=\'archivedprojects.php?ClientId=\'+this.value;document.form1.submit();"');
-        }
-        ?>
-    </div>
-    <br clear="all" />
-</form>
 
-<br clear="all" />
-<table class="pagination">
-    <tr>
-        <td><?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, 0, $queryString_rsProject); ?>">First</a>
-                <?php } // Show if not first page ?></td>
-        <td><?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, max(0, $pageNum_rsProject - 1), $queryString_rsProject); ?>">Previous</a>
-                <?php } // Show if not first page ?></td>
-        <td><?php if ($pageNum_rsProject < $totalPages_rsProject) { // Show if not last page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, min($totalPages_rsProject, $pageNum_rsProject + 1), $queryString_rsProject); ?>">Next</a>
-                <?php } // Show if not last page ?></td>
-        <td><?php if ($pageNum_rsProject < $totalPages_rsProject) { // Show if not last page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, $totalPages_rsProject, $queryString_rsProject); ?>">Last</a>
-                <?php } // Show if not last page ?></td>
-    </tr>
-</table>
-<table border="1" cellpadding="5" cellspacing="2" valign="top" width="90%" style="border-collapse:collapse;overflow:auto;" bordercolor="#efefef" align="center">
-    <tr>
-        <th align="center">Project #</th>
-        <th align="center">Summary</th>
-        <?php if(common::isUserWithLimitedAccess()) {?>
-        <th align="center">Hours Purchased</th>
-            <?php } else {?>
-        <th align="center">Total Cost</th>
-            <?php } ?>
-        <th align="center">Status</th>
-        <td align="center"></td>
-    </tr>
-    <?php if($totalRows_rsProject) do {
+
+
+
+
+
+    <!-- Project PMS  -->
+
+    <!-- Four columns of text below the carousel -->
+
+      <div class="row">
+        <div class="col-md-12"><h3 class="blue">PROJECT MANAGEMENT SYSTEM</h3></div>
+      </div>
+      <br />
+
+      <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <div class="content">
+          <div class="row">
+            <div class="col-sm-3"><h4>My Projects</h4></div>
+            <div class="col-sm-7"> Filter by
+                <form name="form1" method="post">
+              <div class="btn-group">
+                <button type="button" class="btn btn-dark">Only incomplete ones</button>
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="archivedprojects.php?ProjectStatusId=incomplete">Only incomplete ones</a></li>
+                  <li><a href="archivedprojects.php?ProjectStatusId=">All</a></li>>
+                </ul>
+              </div>
+              <div class="btn-group">
+                <? echo common::SelectByEnum('ProjectPriorityId','projectpriority',$ProjectPriorityId,true,'onchange="document.form1.action=\'archivedprojects.php?ProjectPriorityId=\'+this.value;document.form1.submit();"'); ?>
+              </div>
+              <div class="btn-group">
+                <?php
+                if(common::isAdmin() === true) {
+                    echo common::SelectByEnum('ClientId','client',$ClientId,true,'onchange="document.form1.action=\'archivedprojects.php?ClientId=\'+this.value;document.form1.submit();"');
+                }
+                ?>
+              </div>
+              </form>
+            </div>
+            <div class="col-sm-2">
+              <a href="addproject.php"><button type="button" class="btn btn-light">Add New Project</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Table -->
+      <table class="table">
+        <tr>
+          <td><a href="archivedprojects.php?SortOrder=DateWhenPosted"><strong>Date & Time <span class="caret"></span></strong></a></td>
+          <td><a href="archivedprojects.php?SortOrder=ProjectsId"><strong>Project # <span class="caret"></span></strong></a></td>
+          <td><a href="archivedprojects.php?SortOrder=ProjectPriorityId"><strong>Priority <span class="caret"></span></strong></a></td>
+          <td><a href="archivedprojects.php?SortOrder=ManualSort"><strong>Project</strong></a></td>
+          <td><strong>
+           <?php if(common::isUserWithLimitedAccess()) {
+                    echo 'Hours';
+                }
+                else {
+                    echo 'Total Cost';
+                }
+            ?>
+            </strong>
+          </td>
+          <td><a href="archivedprojects.php?SortOrder=ProjectStatusId"><strong>Status <span class="caret"></span></strong></a></td>
+          <td><strong></strong></td>
+        </tr>
+        <?php if($totalRows_rsProject) do {
 
             $priorityIcon = common::getPriorityIcon($row_rsProject['ProjectPriorityId']);
 
@@ -212,28 +224,17 @@ require_once('Includes/header.php');
             $row_post = mysql_fetch_assoc($rsPost);
 
             ?>
-    <tr>
-        <td align="center"><?php echo $row_rsProject['ProjectId']; ?></td>
-        <td width="40%" align="center">
-            <div style="width:20%px;float:left;"><?php echo $notifications; ?></div>
-            <div style="float:right;width:80%">
-                <a title="<?php echo $row_rsProject[TotalPosts]; ?> total messages" href="viewproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>"><?php if($unreadgAndNewFlag === true) {
-                                echo '<span style="font-weight:bold;color:darkred!important;font-size:15px;">'.$row_rsProject['ProjectTitle'].'</span>';
-                            }else {
-                                echo $row_rsProject['ProjectTitle'];
-                            } ?></a>
-                <br clear="all" /><small>Published on <?php echo $row_rsProject[DateWhenPosted]; ?></small>
-                <br clear="all" /><small>By <?php echo $row_rsProject['ClientName']; ?></small>
-                        <?php if(!empty($row_rsProject[LastPostDateTime])) {?>
-                <br clear="all" /><small>Last <a href="viewproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>#post_<?php echo $row_post[PostId]; ?>">message</a> on <?php echo $row_rsProject[LastPostDateTime]; ?></small>
-                <br clear="all" /><small>by: <?php echo $row_post[poster]; ?></small>
-
-                            <?php } ?>
-            </div>
-        </td>
-
-        <td align="center">
-                    <?php
+        <tr>
+          <td><?php echo $row_rsProject[DateWhenPosted]; ?></td>
+          <td><?php echo $row_rsProject['ProjectId']; ?></td>
+          <td><?php echo $notifications; ?></td>
+          <td class="maxwidth"><a title="<?php echo $row_rsProject[TotalPosts]; ?> total messages" href="viewproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>"><?php if ($unreadgAndNewFlag === true) {
+                            echo '<span style="font-weight:bold;color:darkred!important;font-size:15px;">' . $row_rsProject['ProjectTitle'] . '</span>';
+                        } else {
+                            echo $row_rsProject['ProjectTitle'];
+                        } ?></a></td>
+          <td><strong>
+            <?php
                     if((int)$row_rsProject['ProjectStatusId'] === 10) {
                         $font='<span style="color:#000000;">';
                     }
@@ -251,38 +252,48 @@ require_once('Includes/header.php');
                         echo $font.$row_rsProject['Currency'].round($POTotalNetValue,2).'</span>';
                     }
                     ?>
-        </td>
-        <td align="center"><?php echo $row_rsProject[ProjectStatus];?></td>
-        <td>
-            <div style="margin-left:15px;text-align:left;">
-                <a href="projectkeynotes.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>" title="key notes" >view project notes</a><br>
-                <a href="projectattachments.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>" title="Attachments" >view project attachments</a><br>
+          </strong></td>
+          <td><?php echo $row_rsProject[ProjectStatus]; ?></td>
+          <td align="right">
+            <a href="projectkeynotes.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>" title="key notes"><img src="../images/icons/viewnotes-icon.png" width="20"></a> 
+            <a href="projectattachments.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>" title="Attachments"><img src="../images/icons/attach-icon.png" width="20"></a>
+            <?php if (common::isAdmin() === true) { ?>
+            <a href="#" onclick="if(confirm('Delete this project?')){document.location='deleteproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>';}else{void(0);}" title="Delete this project"><img src="../images/icons/delete-icon.png" width="20"></a>
+            <?php } ?>
+            <a href="#" onclick="if(confirm('Hide this project?')){document.location='hideproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>';}else{void(0);}" title="Hide this project"><img src="../images/icons/novis-icon.png" width="20"></a>
+          </td>
+        </tr>
+    
 
-                        <?php if(common::isAdmin() === true) { ?>
-                <a href="#" onclick="if(confirm('Delete this project?')){document.location='deleteproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>';}else{void(0);}" title="Delete this project">Delete project</a><br>
-                            <?php } ?>
-                <a href="#" onclick="if(confirm('Hide this project?')){document.location='hideproject.php?ProjectId=<?php echo $row_rsProject['ProjectId']; ?>';}else{void(0);}" title="Hide this project">Hide project</a><br>
-            </div>
-        </td>
-    </tr>
-            <?php } while ($row_rsProject = mysql_fetch_assoc($rsProject)); ?>
-</table>
-<table class="pagination">
-    <tr>
-        <td><?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, 0, $queryString_rsProject); ?>">First</a>
-                <?php } // Show if not first page ?></td>
-        <td><?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, max(0, $pageNum_rsProject - 1), $queryString_rsProject); ?>">Previous</a>
-                <?php } // Show if not first page ?></td>
-        <td><?php if ($pageNum_rsProject < $totalPages_rsProject) { // Show if not last page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, min($totalPages_rsProject, $pageNum_rsProject + 1), $queryString_rsProject); ?>">Next</a>
-                <?php } // Show if not last page ?></td>
-        <td><?php if ($pageNum_rsProject < $totalPages_rsProject) { // Show if not last page ?>
-            <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, $totalPages_rsProject, $queryString_rsProject); ?>">Last</a>
-                <?php } // Show if not last page ?></td>
-    </tr>
-</table>
+     <?php } while ($row_rsProject = mysql_fetch_assoc($rsProject)); ?>
+      </table>
+    </div>
+    <ul class="pagination pagination-sm navbar-right">
+      <li><?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
+        <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, 0, $queryString_rsProject); ?>">&laquo;</a>
+        <?php } // Show if not first page ?></li>
+      <li class="active">
+        <?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
+                <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, max(0, $pageNum_rsProject - 1), $queryString_rsProject); ?>">Previous</a>
+            <?php } // Show if not first page ?></li>
+      <li>
+        <?php if ($pageNum_rsProject < $totalPages_rsProject) { // Show if not last page ?>
+                <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, min($totalPages_rsProject, $pageNum_rsProject + 1), $queryString_rsProject); ?>">Next</a>
+            <?php } // Show if not last page ?></li>
+      <li>
+        <?php if ($pageNum_rsProject < $totalPages_rsProject) { // Show if not last page ?>
+                <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, $totalPages_rsProject, $queryString_rsProject); ?>">Last</a>
+            <?php } // Show if not last page ?></li>
+      <li>
+        <a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><?php if ($pageNum_rsProject > 0) { // Show if not first page ?>
+        <a href="<?php printf("%s?pageNum_rsProject=%d%s", $currentPage, max(0, $pageNum_rsProject - 1), $queryString_rsProject); ?>">&raquo;</a>
+            <?php } // Show if not first page ?></li></li>
+    </ul>
+    <!-- Container End -->
+
+
 <?php
 mysql_free_result($rsProject);
 require_once('Includes/footer.php');
